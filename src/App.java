@@ -1,5 +1,5 @@
 import Persistence.SongLibrary;
-import Interaction.ConsoleInterfaction;
+import Interaction.ConsoleInteraction;
 
 public class App {
 
@@ -8,7 +8,7 @@ public class App {
 
         SongLibrary allSongs = new SongLibrary();
 
-        ConsoleInterfaction ui = new ConsoleInterfaction();
+        ConsoleInteraction ui = new ConsoleInteraction();
 
 
     }
