@@ -1,8 +1,8 @@
 package Interaction;
 
-public class ConsoleInterfaction {
+public class ConsoleInteraction {
     
-    public ConsoleInterfaction() {
+    public ConsoleInteraction() {
         super();
 
         Print("hello world 2");
