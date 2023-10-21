@@ -16,8 +16,6 @@ public class ConsoleInteraction {
 
     private void userQuery(){
 
-        clearScreen();
-
         print("Press 1 to display all songs.");
         print("Press 2 to add a new songs.");
         print("Press x to close.");
@@ -58,10 +56,5 @@ public class ConsoleInteraction {
 
     private void print(String text){
         System.out.println(text);
-    }
-
-    private static void clearScreen()  {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
     }
 }
