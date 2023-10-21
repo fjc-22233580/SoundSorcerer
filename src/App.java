@@ -15,11 +15,11 @@ public class App {
 
         
 
-        saveToFile();
+        //saveToFile();
 
-        System.out.println("file saved!");
+        //System.out.println("file saved!");
 
-        restoreData();
+        //restoreData();
     }
 
     private static void saveToFile(){
