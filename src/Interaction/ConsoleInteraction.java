@@ -1,14 +1,67 @@
 package Interaction;
 
+import Models.SongInfo;
+
 public class ConsoleInteraction {
     
-    public ConsoleInteraction() {
-        super();
+    private LibraryManager libraryManager;
 
-        Print("hello world 2");
+    public ConsoleInteraction(LibraryManager libraryManager) {
+        super();
+        this.libraryManager = libraryManager;
+
+        userQuery();
+
     }
 
-    private void Print(String text){
+    private void userQuery(){
+
+        clearScreen();
+
+        print("Press 1 to display all songs.");
+        print("Press 2 to add a new songs.");
+        print("Press x to close.");
+
+        String reponse = InputReader.getString();
+
+
+        switch (reponse) {
+            case "1":
+                printLibrary();
+                break;
+
+            case "2":
+                // TODO - Next logic
+                break;
+
+            case "x":
+                System.exit(0);
+                break;
+
+            default:
+                break;
+        }
+                
+        userQuery();
+        
+    }
+
+    private void printLibrary(){
+
+        int count = 1;
+
+        for (SongInfo songInfo : libraryManager.AllSongs()) {
+            print(count + ". " + songInfo.songName() + " " + songInfo.artistName());
+            count++;
+        }
+    }
+
+    private void print(String text){
         System.out.println(text);
+    }
+
+    private static void clearScreen()  {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
