@@ -10,11 +10,11 @@ public class ConsoleInteraction {
         super();
         this.libraryManager = libraryManager;
 
-        userQuery();
+        mainMenu();
 
     }
 
-    private void userQuery(){
+    private void mainMenu(){
 
         print("Press 1 to display all songs.");
         print("Press 2 to add a new songs.");
@@ -40,7 +40,7 @@ public class ConsoleInteraction {
                 break;
         }
                 
-        userQuery();
+        mainMenu();
         
     }
 
