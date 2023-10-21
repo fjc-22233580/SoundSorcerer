@@ -1,4 +1,5 @@
 import Persistence.SongLibrary;
+import Interaction.ConsoleInterfaction;
 
 public class App {
 
@@ -6,6 +7,10 @@ public class App {
         System.out.println("Hello, World!");
 
         SongLibrary allSongs = new SongLibrary();
+
+        ConsoleInterfaction ui = new ConsoleInterfaction();
+
+
     }
 
 }
