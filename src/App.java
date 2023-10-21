@@ -1,16 +1,14 @@
-import Persistence.SongLibrary;
 import Interaction.ConsoleInteraction;
+import Interaction.LibraryManager;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
 
-        SongLibrary allSongs = new SongLibrary();
+        LibraryManager libraryManager = new LibraryManager();
 
-        ConsoleInteraction ui = new ConsoleInteraction();
-
-
+        ConsoleInteraction ui = new ConsoleInteraction(libraryManager);
     }
 
 }
