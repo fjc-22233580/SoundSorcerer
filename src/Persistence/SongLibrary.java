@@ -34,7 +34,6 @@ public class SongLibrary{
     }
 
     /** Exposes the list of all songs.
-     * 
      * @return returns the list of songs which we have depersisted 
      */ 
     public List<SongInfo> AllSongs(){
@@ -85,11 +84,10 @@ public class SongLibrary{
 
     /** Method to create a list of dummy songs */
     @SuppressWarnings("unused")
-    private void createDummySongs(){
-
+    private void createDummySongs() {
 
         for (int i = 0; i < 5; i++) {
-            
+
             String songName = "Song " + i;
             String artistName = "Artist " + i;
             int count = i * i;
