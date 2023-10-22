@@ -33,7 +33,7 @@ public class ConsoleInteraction {
                 break;
 
             case "2":
-                // TODO - Next logic
+                addNewSong();
                 break;
             
             case "3":
@@ -56,6 +56,41 @@ public class ConsoleInteraction {
         InputReader.getString();
 
         printMainMenu();
+    }
+
+    private void addNewSong(){
+        clearConsole();
+
+        final String flag = "add:";
+
+        print("Enter " + flag + " followed by the song title, artist and play count seperated by commas");
+        print("or press enter x to return to the main menu");
+
+        String response = InputReader.getString();
+
+        if (response.contains(flag)) {
+
+            // Remove the flag from the beginning of the string
+            String song = response.replace(flag, "");
+
+            // Split the string into each part, using a comme as the delimiter
+            String[] items = song.split(",");
+
+            if (items.length == 3) {
+                for (String string : items) {
+                    print(string.trim());
+                }
+            }
+            else{
+                print("Error: Incorrect number of arguments");
+            }
+
+        } else if (response.equals("x")) {
+            returnToMainMenu();
+        } else {
+            // TODO - add logic to handle unexpected command
+
+        }
     }
 
     private void printLibrary(){
