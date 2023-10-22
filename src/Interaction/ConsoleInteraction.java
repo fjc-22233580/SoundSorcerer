@@ -50,24 +50,7 @@ public class ConsoleInteraction {
         }        
     }
 
-    private void returnToMainMenu(String extraMessage){
-        print(extraMessage);
-        print("Press enter to return to the main menu...");
-
-        // Hold console for input
-        InputReader.getString();
-
-        printMainMenu();
-    }
-
-    private void returnToMainMenu(){
-        print("Press enter to return to the main menu...");
-
-        // Hold console for input
-        InputReader.getString();
-
-        printMainMenu();
-    }
+   
 
     private void addNewSong(){
 
@@ -140,8 +123,22 @@ public class ConsoleInteraction {
         returnToMainMenu();
     }
 
-    private void print(String text){
+    private void print(String text) {
         System.out.println(text);
+    }
+
+    private void returnToMainMenu(String extraMessage) {
+        print(extraMessage);
+        returnToMainMenu();
+    }
+
+    private void returnToMainMenu() {
+        print("Press enter to return to the main menu...");
+
+        // Hold console for input
+        InputReader.getString();
+
+        printMainMenu();
     }
 
     private void clearConsole(){
