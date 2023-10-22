@@ -2,6 +2,7 @@ package Interaction;
 
 import java.io.IOException;
 import Models.SongInfo;
+import HelperMethods.HelperMethods;
 
 public class ConsoleInteraction {
     
@@ -49,6 +50,16 @@ public class ConsoleInteraction {
         }        
     }
 
+    private void returnToMainMenu(String extraMessage){
+        print(extraMessage);
+        print("Press enter to return to the main menu...");
+
+        // Hold console for input
+        InputReader.getString();
+
+        printMainMenu();
+    }
+
     private void returnToMainMenu(){
         print("Press enter to return to the main menu...");
 
@@ -59,44 +70,59 @@ public class ConsoleInteraction {
     }
 
     private void addNewSong(){
+
+        boolean invalidArgs = false;
+
         clearConsole();
 
-        final String flag = "add:";
+        final String Flag = "add:";
 
-        print("Enter " + flag + " followed by the song title, artist and play count seperated by commas");
+        print("Enter " + Flag + " followed by the song title, artist and play count seperated by commas");
         print("or press enter x to return to the main menu");
 
         String response = InputReader.getString();
 
-        if (response.contains(flag)) {
+        if (response.contains(Flag)) {
 
             // Remove the flag from the beginning of the string
-            String song = response.replace(flag, "");
+            String song = response.replace(Flag, "");
 
             // Split the string into each part, using a comme as the delimiter
+            // Note: this also checks for empty strings.
             String[] items = song.split(",");
 
             if (items.length == 3) {
 
                 String songTitle = items[0].trim();
                 String artistName = items[1].trim();
-                int playCount = Integer.parseInt(items[2].trim());
+                Integer playCount = HelperMethods.tryParseInt(items[2].trim());
 
-                libraryManager.addSong(songTitle, artistName, playCount);
+                if (!HelperMethods.isStringNullOrEmpty(songTitle)
+                        && !HelperMethods.isStringNullOrEmpty(artistName)
+                        && playCount != null) {
 
-                print("New Song successfully added!");
+                    libraryManager.addSong(songTitle, artistName, playCount);
 
-                returnToMainMenu();
+                    print("New Song successfully added!");
+
+                    returnToMainMenu();
+
+                } else {
+                    invalidArgs = true;
+                }
 
             } else {
-                print("Error: Incorrect number of arguments");
+                invalidArgs = true;
             }
 
         } else if (response.equals("x")) {
             returnToMainMenu();
         } else {
-            // TODO - add logic to handle unexpected command
+            invalidArgs = true;
+        }
 
+        if (invalidArgs) {
+            returnToMainMenu("Error: Invalid/missing arguments have been supplied.");
         }
     }
 
@@ -128,7 +154,7 @@ public class ConsoleInteraction {
             // Wait for the process to complete
             int exitCode = process.waitFor();
 
-            if (exitCode == 0) {                
+            if (exitCode == 0) {
                 // Console succesfully cleared.
             } else {
                 System.err.println("Failed to clear the command prompt window.");
