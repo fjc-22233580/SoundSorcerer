@@ -1,6 +1,8 @@
 package Interaction;
 import java.util.Scanner;
 
+import HelperMethods.HelperMethods;
+
 /**
 * This class provides methods to get user input from the console, 
 * it currently supports string, int, and double.
@@ -13,16 +15,15 @@ public class InputReader {
     * Returns the string that the user has entered.
     */
     public static String getString(){
-        String inputStr = reader.nextLine();
-        return inputStr;      
+        return getLine();      
     }
 
     /**
     * Returns the integer that the user has entered.
     */
     public static Integer getInt(){
-        Integer inputInt = reader.nextInt();
-        return inputInt;      
+        Integer value = HelperMethods.tryParseInt(getLine());
+        return value;      
     }
 
     /**
@@ -31,6 +32,16 @@ public class InputReader {
     public static Double getDouble(){
         double inputStr = reader.nextDouble();
         return inputStr;      
+    }
+
+    /** Gets the next line from the terminal,
+     * seperated into its own function because the scanners .nextInt() fails to consume the new line char so only works once.
+     * Better to use nextLine() then convert into necessary types. 
+     * @return the string that the user has input into the terminal.
+     */
+    private static String getLine(){
+        String inputStr = reader.nextLine();
+        return inputStr;
     }
 
     
