@@ -77,11 +77,18 @@ public class ConsoleInteraction {
             String[] items = song.split(",");
 
             if (items.length == 3) {
-                for (String string : items) {
-                    print(string.trim());
-                }
-            }
-            else{
+
+                String songTitle = items[0].trim();
+                String artistName = items[1].trim();
+                int playCount = Integer.parseInt(items[2].trim());
+
+                libraryManager.addSong(songTitle, artistName, playCount);
+
+                print("New Song successfully added!");
+
+                returnToMainMenu();
+
+            } else {
                 print("Error: Incorrect number of arguments");
             }
 
@@ -100,7 +107,7 @@ public class ConsoleInteraction {
         int count = 1;
 
         for (SongInfo songInfo : libraryManager.AllSongs()) {
-            print(count + ". " + songInfo.songName() + " " + songInfo.artistName());
+            print(count + ". " + songInfo.songName() + " " + songInfo.artistName() + " " + songInfo.playCount());
             count++;
         }
 

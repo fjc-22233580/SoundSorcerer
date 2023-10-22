@@ -16,4 +16,11 @@ public class LibraryManager {
     public List<SongInfo> AllSongs(){
         return songLibrary.AllSongs();
     }
+
+    public void addSong(String songTitle, String artistName, int playCount){
+
+        SongInfo addedSong = new SongInfo(songTitle, artistName, playCount);
+
+        songLibrary.AllSongs().addLast(addedSong);
+    }
 }
