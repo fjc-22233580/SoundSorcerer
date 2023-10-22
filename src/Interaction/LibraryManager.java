@@ -23,4 +23,8 @@ public class LibraryManager {
 
         songLibrary.AllSongs().addLast(addedSong);
     }
+
+    public void removeSongAtIndex(int userIndex) {
+        songLibrary.AllSongs().remove(userIndex);
+    }
 }

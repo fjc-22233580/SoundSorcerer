@@ -38,7 +38,7 @@ public class ConsoleInteraction {
                 break;
             
             case "3":
-                // TODO - Next logic
+                removeSong();
                 break;
 
             case "x":
@@ -48,6 +48,39 @@ public class ConsoleInteraction {
             default:
                 break;
         }        
+    }
+
+    private void removeSong(){
+        clearConsole();
+        
+        printSongs();
+        print("Please enter the number of the song you wish to delete: ");
+
+        int userIndex = InputReader.getInt() - 1;
+        int lastIndex = libraryManager.AllSongs().size() - 1;
+        
+        // Check the user supplied index is between the min/max index.
+        if (userIndex >= 0 && userIndex <= lastIndex) {
+
+            SongInfo selectesSong = libraryManager.AllSongs().get(userIndex);
+
+            print("Selected song: " + selectesSong.songName());
+            print("Are you sure wish to delete this song? Y/N");
+
+            String response = InputReader.getString();
+
+            if (response.equalsIgnoreCase("y")) {
+
+                libraryManager.removeSongAtIndex(userIndex);
+                returnToMainMenu("Song deleted!");
+            } else {
+                returnToMainMenu();
+            }
+
+        } else {
+            returnToMainMenu("Invalid input!");
+        }
+
     }
 
    
@@ -112,15 +145,17 @@ public class ConsoleInteraction {
     private void printLibrary(){
 
         clearConsole();
+        printSongs();
+        returnToMainMenu();
+    }
 
+    private void printSongs() {
         int count = 1;
 
         for (SongInfo songInfo : libraryManager.AllSongs()) {
             print(count + ". " + songInfo.songName() + " " + songInfo.artistName() + " " + songInfo.playCount());
             count++;
         }
-
-        returnToMainMenu();
     }
 
     private void print(String text) {
