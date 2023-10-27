@@ -9,6 +9,7 @@ public class App {
     // TODO - Add GUIDs to SongInfo?
     // TODO - Add sorting when displaying list
     // TODO - Other ideas?
+    // Test commit
 
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
