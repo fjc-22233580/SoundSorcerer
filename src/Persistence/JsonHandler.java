@@ -3,6 +3,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.FileWriter;
 import java.io.Writer;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.File;
 import java.io.FileReader;
@@ -16,11 +17,11 @@ public class JsonHandler {
      * @param song The SongInfo to be serialised into JSON.
      * @param folderPath The folder where the given SongInfo will be saved.
      */
-    public static void saveToJson(SongInfo song, String folderPath){
+    public static void saveToJson(SongInfo song, Path folderPath){
 
         Gson gson = new GsonBuilder().create();
 
-        String fileName = Paths.get(folderPath, song.songName() + ".json").toString();
+        String fileName = Paths.get(folderPath.toString(), song.songName() + ".json").toString();
         
         try {
 

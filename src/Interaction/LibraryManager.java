@@ -1,5 +1,4 @@
 package Interaction;
-
 import Persistence.SongLibrary;
 import java.util.List;
 import Models.SongInfo;
@@ -21,11 +20,12 @@ public class LibraryManager {
 
         SongInfo addedSong = new SongInfo(songTitle, artistName, playCount);
 
-        songLibrary.AllSongs().addLast(addedSong);
-        
+        songLibrary.addSong(addedSong);
+
     }
 
     public void removeSongAtIndex(int userIndex) {
+
         songLibrary.AllSongs().remove(userIndex);
     }
 }

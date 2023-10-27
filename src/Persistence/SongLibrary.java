@@ -41,6 +41,11 @@ public class SongLibrary{
         return allSongs;
     }    
 
+    public void addSong(SongInfo song){
+        allSongs.addLast(song);
+        JsonHandler.saveToJson(song, appDataPath);
+    }
+
     private void RestoreSongs(){
 
         File folder = new File(appDataPath.toString());
@@ -83,7 +88,7 @@ public class SongLibrary{
 
             SongInfo dummy = new SongInfo(songName, artistName, count);
 
-            JsonHandler.saveToJson(dummy, appDataPath.toString());
+            JsonHandler.saveToJson(dummy, appDataPath);
         }
     }
 
