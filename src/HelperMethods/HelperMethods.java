@@ -17,7 +17,7 @@ public class HelperMethods {
             value = Integer.parseInt(text);
 
         } catch (NumberFormatException ex) {
-            // Ignore failed parsing
+            // Ignore failed parsing as we will return null anyway
         }
 
         return value;
@@ -38,12 +38,17 @@ public class HelperMethods {
             value = Double.parseDouble(text);
 
         } catch (NumberFormatException ex) {
-            // Ignore failed parsing
+            // Ignore failed parsing as we will return null anyway
         }
 
         return value;
     }
 
+    /** Helper method to determine if a string is null or empty
+     * 
+     * @param string the text to be processed
+     * @return Returns true if string empty or is null, else returns false.
+     */
     public static boolean isStringNullOrEmpty(String string) {
         return string == null || string.isEmpty();
     }
