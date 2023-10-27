@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import HelperMethods.HelperMethods;
 import Models.SongInfo;
 
 public class SongLibrary{
@@ -49,37 +50,25 @@ public class SongLibrary{
 
             for (File file : listOfFiles) {
 
-                String fileExtension = getFileExtension(file);
+                // Check we have a file and it has an extension
+                String fileExtension = HelperMethods.getFileExtension(file);
+                if (file.isFile() && fileExtension != null) {
 
-                // Check if we have a file and if it a .json before parsing into a SongInfo object.
-                if (file.isFile() && fileExtension.equals(".json")) {
+                    // Check if a .json before parsing into a SongInfo object.
+                    if (fileExtension.equals(".json")) {
 
-                    // Check we have managed to parse the json file,
-                    // this could return null if the parsing has failed.
-                    SongInfo restoredSong = JsonHandler.restoreSongInfo(file);
-                    if (restoredSong != null) {                        
-                        allSongs.addLast(restoredSong);
+                        // Check we have managed to parse the json file,
+                        // this could return null if the parsing has failed.
+                        SongInfo restoredSong = JsonHandler.restoreSongInfo(file);
+                        if (restoredSong != null) {
+                            allSongs.addLast(restoredSong);
+                        }
                     }
                 }
-            }
+            } // end of foreach
 
             System.out.println(allSongs.size() + " songs restored");
-        }
-        
-    }
-
-    /** Helper method to get a file extension of a file.
-     * 
-     * @param file which extension will be extracted.
-     * @return the extension of the file
-     */
-    private String getFileExtension(File file) {
-        String name = file.getName();
-        int lastIndexOf = name.lastIndexOf(".");
-        if (lastIndexOf == -1) {
-            return ""; // empty extension
-        }
-        return name.substring(lastIndexOf);
+        }        
     }
 
     /** Method to create a list of dummy songs */

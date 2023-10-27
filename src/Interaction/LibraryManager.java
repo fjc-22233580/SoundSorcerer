@@ -22,6 +22,7 @@ public class LibraryManager {
         SongInfo addedSong = new SongInfo(songTitle, artistName, playCount);
 
         songLibrary.AllSongs().addLast(addedSong);
+        
     }
 
     public void removeSongAtIndex(int userIndex) {

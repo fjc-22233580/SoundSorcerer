@@ -1,5 +1,7 @@
 package HelperMethods;
 
+import java.io.File;
+
 public class HelperMethods {
 
     /** Helper method which attempts to parse given text to an integer
@@ -51,6 +53,28 @@ public class HelperMethods {
      */
     public static boolean isStringNullOrEmpty(String string) {
         return string == null || string.isEmpty();
+    }
+
+
+    /** Helper method to get a file extension of a file.
+     * If we couldn't find an extention this will null;
+     * 
+     * @param file which extension will be extracted.
+     * @return the extension of the file
+     */
+    public static String getFileExtension(File file) {
+        
+        // Assume we couldn't get an extension for some reason.
+        String ext = null;
+
+        // Get the extension from the file.
+        String name = file.getName();
+        int lastIndexOf = name.lastIndexOf(".");
+        if (lastIndexOf > 0) {
+            ext = name.substring(lastIndexOf);
+        }
+
+        return ext;
     }
 
 }
