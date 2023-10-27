@@ -1,7 +1,5 @@
 import Interaction.ConsoleInteraction;
 import Interaction.LibraryManager;
-import java.util.ArrayList;
-
 
 public class App {
 
