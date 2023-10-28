@@ -66,6 +66,7 @@ public class SongLibrary{
                         // this could return null if the parsing has failed.
                         SongInfo restoredSong = JsonHandler.restoreSongInfo(file);
                         if (restoredSong != null) {
+                            restoredSong.setFilePath(file.toString());
                             allSongs.addLast(restoredSong);
                         }
                     }
