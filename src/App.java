@@ -5,10 +5,8 @@ public class App {
 
     // TODO - Rehash text output to always keep library visible, then menus below
     // TODO - ASCII Art for intro
-    // TODO - Update persistence when adding/removing songs
     // TODO - Add GUIDs to SongInfo?
     // TODO - Add sorting when displaying list
-    // TODO - Add storage URL to SongInfo class
     // TODO - Other ideas?
 
     public static void main(String[] args) throws Exception {
