@@ -1,10 +1,12 @@
 package Interaction;
 
 import java.io.IOException;
+
+import BaseClasses.BaseView;
 import Models.SongInfo;
 import HelperMethods.HelperMethods;
 
-public class ConsoleInteraction {
+public class ConsoleInteraction extends BaseView {
     
     private LibraryManager libraryManager;
     private LibraryView libraryView;
@@ -150,10 +152,6 @@ public class ConsoleInteraction {
         clearConsole();
         libraryView.printSongs();
         returnToMainMenu();
-    }
-
-    private void print(String text) {
-        System.out.println(text);
     }
 
     private void returnToMainMenu(String extraMessage) {

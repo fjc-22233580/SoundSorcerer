@@ -1,10 +1,9 @@
 package Interaction;
 
+import BaseClasses.BaseView;
 import Models.SongInfo;
 
-public class LibraryView {
-
-    
+public class LibraryView extends BaseView{    
 
     private LibraryManager libraryManager;
 
@@ -17,7 +16,7 @@ public class LibraryView {
         int count = 1;
 
         for (SongInfo songInfo : libraryManager.AllSongs()) {
-            System.out.println(count + ". " + songInfo.getSongName() + " " + songInfo.getArtistName() + " " + songInfo.getPlayCount());
+            print(count + ". " + songInfo.getSongName() + " " + songInfo.getArtistName() + " " + songInfo.getPlayCount());
             count++;
         }
     }
