@@ -8,7 +8,6 @@ public class App {
     // TODO - Add GUIDs to SongInfo?
     // TODO - Add sorting when displaying list - into LibraryView class
     // TODO - Fix bug when pressing enter with no value, after first delete song prompt
-    // TODO - move print method to common base class for ConsoleInteraction and LibraryView.
     // TODO - Other ideas?
 
     public static void main(String[] args) throws Exception {
