@@ -64,7 +64,7 @@ public class ConsoleInteraction {
 
             SongInfo selectesSong = libraryManager.AllSongs().get(userIndex);
 
-            print("Selected song: " + selectesSong.songName());
+            print("Selected song: " + selectesSong.getSongName());
             print("Are you sure wish to delete this song? Y/N");
 
             String response = InputReader.getString();
@@ -153,7 +153,7 @@ public class ConsoleInteraction {
         int count = 1;
 
         for (SongInfo songInfo : libraryManager.AllSongs()) {
-            print(count + ". " + songInfo.songName() + " " + songInfo.artistName() + " " + songInfo.playCount());
+            print(count + ". " + songInfo.getSongName() + " " + songInfo.getArtistName() + " " + songInfo.getPlayCount());
             count++;
         }
     }
