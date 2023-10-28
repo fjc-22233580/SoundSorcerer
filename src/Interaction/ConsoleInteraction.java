@@ -7,10 +7,13 @@ import HelperMethods.HelperMethods;
 public class ConsoleInteraction {
     
     private LibraryManager libraryManager;
+    private LibraryView libraryView;
 
     public ConsoleInteraction(LibraryManager libraryManager) {
         super();
         this.libraryManager = libraryManager;
+
+        libraryView = new LibraryView(libraryManager);
 
         printMainMenu();
 
@@ -53,7 +56,7 @@ public class ConsoleInteraction {
     private void removeSong(){
         clearConsole();
         
-        printSongs();
+        libraryView.printSongs();
         print("Please enter the number of the song you wish to delete: ");
 
         int userIndex = InputReader.getInt() - 1;
@@ -145,17 +148,8 @@ public class ConsoleInteraction {
     private void printLibrary(){
 
         clearConsole();
-        printSongs();
+        libraryView.printSongs();
         returnToMainMenu();
-    }
-
-    private void printSongs() {
-        int count = 1;
-
-        for (SongInfo songInfo : libraryManager.AllSongs()) {
-            print(count + ". " + songInfo.getSongName() + " " + songInfo.getArtistName() + " " + songInfo.getPlayCount());
-            count++;
-        }
     }
 
     private void print(String text) {
