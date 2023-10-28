@@ -47,7 +47,18 @@ public class SongLibrary{
     }
 
     public void removeSong(int index){
-        allSongs.remove(index);
+
+        // Get the song from the given index
+        SongInfo song = allSongs.get(index);
+
+        // Delete the song from disk
+        File songFile = new File(song.getFilePath());
+        if (songFile.exists()) {            
+            songFile.delete();
+        }
+
+        // Remove the song from the library
+        allSongs.remove(song);
     }
 
     private void RestoreSongs(){
