@@ -16,12 +16,7 @@ public class LibraryView extends BaseView{
     }
 
     public void printSongs() {
-        int count = 1;
-
-        for (SongInfo songInfo : libraryManager.AllSongs()) {
-            print(count + ". " + songInfo.getSongName() + " " + songInfo.getArtistName() + " " + songInfo.getPlayCount());
-            count++;
-        }
+       printSongs(libraryManager.AllSongs());
     }
 
 	public void libraryViewMainMenu() {
@@ -43,7 +38,10 @@ public class LibraryView extends BaseView{
 	}
 
     public void printSearchMenu(){
-        print("Enter search criteria to find songs/artists that match:");
+
+        clearConsole();
+        
+        print("Enter search criteria to find songs or artists that match:");
 
         String critera = InputReader.getString();
 
@@ -53,9 +51,11 @@ public class LibraryView extends BaseView{
 
             if (song.getSongName().toLowerCase().equals(critera.toLowerCase()) 
             || song.getArtistName().toLowerCase().equals(critera.toLowerCase())) {
-                print("Song: " + song.getSongName() + " " + song.getArtistName());
+                filteredSongs.add(song);
             }
         }
+
+        printSongs(filteredSongs);
     }
 
 

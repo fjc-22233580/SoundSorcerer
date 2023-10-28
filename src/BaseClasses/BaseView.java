@@ -1,11 +1,27 @@
 package BaseClasses;
 
 import java.io.IOException;
+import java.util.List;
+
+import Models.SongInfo;
 
 public class BaseView {   
 
     public void print(String text) {
         System.out.println(text);
+    }
+
+    public void printSong(SongInfo song){
+        print(song.getSongName() + " " + song.getArtistName() + " " + song.getPlayCount());
+    }
+
+    public void printSongs(List<SongInfo> songs) {
+        int count = 1;
+
+        for (SongInfo songInfo : songs) {
+            print(count + ". " + songInfo.getSongName() + " " + songInfo.getArtistName() + " " + songInfo.getPlayCount());
+            count++;
+        }
     }
 
 
