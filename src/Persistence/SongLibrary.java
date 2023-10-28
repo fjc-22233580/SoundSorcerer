@@ -46,6 +46,10 @@ public class SongLibrary{
         JsonHandler.saveToJson(song, appDataPath);
     }
 
+    public void removeSong(int index){
+        allSongs.remove(index);
+    }
+
     private void RestoreSongs(){
 
         File folder = new File(appDataPath.toString());

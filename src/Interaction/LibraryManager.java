@@ -25,7 +25,6 @@ public class LibraryManager {
     }
 
     public void removeSongAtIndex(int userIndex) {
-
-        songLibrary.AllSongs().remove(userIndex);
+        songLibrary.removeSong(userIndex);
     }
 }
