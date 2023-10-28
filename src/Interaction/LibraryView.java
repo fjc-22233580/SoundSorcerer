@@ -25,6 +25,7 @@ public class LibraryView extends BaseView{
     }
 
 	public void libraryViewMainMenu() {
+        clearConsole();
 
         print("Press 1 to search the library.");
         print("Press 2 to search for a song.");
