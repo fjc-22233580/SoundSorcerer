@@ -28,6 +28,7 @@ public class ConsoleInteraction extends BaseView {
         print("Press 1 to display all songs.");
         print("Press 2 to add a new song.");
         print("Press 3 to delete a song.");
+        print("Press 4 to go to list sorting menu.");
         print("Press x to close.");
 
         String reponse = InputReader.getString();
@@ -44,6 +45,10 @@ public class ConsoleInteraction extends BaseView {
             
             case "3":
                 removeSong();
+                break;
+
+            case "4":
+                libraryView.libraryViewMainMenu();
                 break;
 
             case "x":
