@@ -55,7 +55,12 @@ public class LibraryView extends BaseView{
             }
         }
 
-        printSongs(filteredSongs);
+        if (filteredSongs.size() > 1) {
+            printSongs(filteredSongs);
+        }
+        else{
+            print("Nothing found!");
+        }
     }
 
 
