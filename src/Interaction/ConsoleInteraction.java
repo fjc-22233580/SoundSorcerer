@@ -14,23 +14,28 @@ public class ConsoleInteraction extends BaseView {
 
         libraryView = new LibraryView(libraryManager);
 
+        // Show the main menu, this is the fist menu to be displayed. 
         printMainMenu();
 
     }
 
+    /**
+     * 
+     */
     private void printMainMenu(){
 
+        // Clear the current window console.
         clearConsole();
 
+        // Print the main menu.
         print("Press 1 to display all songs.");
         print("Press 2 to add a new song.");
         print("Press 3 to delete a song.");
         print("Press 4 to go to list sorting menu.");
         print("Press x to close.");
 
+        // Get the users response and process.
         String reponse = InputReader.getString();
-
-
         switch (reponse) {
             case "1":
                 printLibrary();
