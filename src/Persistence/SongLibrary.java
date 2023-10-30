@@ -42,7 +42,7 @@ public class SongLibrary{
     }    
 
     public void addSong(SongInfo song){
-        allSongs.addLast(song);
+        allSongs.add(song);
         JsonHandler.saveToJson(song, appDataPath);
     }
 
@@ -82,7 +82,7 @@ public class SongLibrary{
                         SongInfo restoredSong = JsonHandler.restoreSongInfo(file);
                         if (restoredSong != null) {
                             restoredSong.setFilePath(file.toString());
-                            allSongs.addLast(restoredSong);
+                            allSongs.add(restoredSong);
                         }
                     }
                 }
