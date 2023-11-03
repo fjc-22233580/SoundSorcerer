@@ -10,7 +10,8 @@ public class App {
     // TODO - Add sorting when displaying list - into LibraryView class
     // TODO - Fix bug when pressing enter with no value, after first delete song prompt
     // TODO - Other ideas?
-    // TODO - Random generator for song info data?    
+    // TODO - Random generator for song info data?  
+    // TODO - Improve uses of "returnToMainMenu" method by passing in the method to be taken to  
 
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
