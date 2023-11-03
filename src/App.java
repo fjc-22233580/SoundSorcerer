@@ -14,8 +14,7 @@ public class App {
     // TODO - Improve uses of "returnToMainMenu" method by passing in the method to be taken to  
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-
+       
         LibraryManager libraryManager = new LibraryManager();
 
         ConsoleInteraction ui = new ConsoleInteraction(libraryManager);
