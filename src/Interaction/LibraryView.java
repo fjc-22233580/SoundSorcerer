@@ -23,7 +23,7 @@ public class LibraryView extends BaseView{
         clearConsole();
 
         print("Press 1 to search the library.");
-        print("Press 2 to search for a song.");
+        print("Press 2 to show a list of songs above a given play count");
 
         String response = InputReader.getString();
 
@@ -31,11 +31,41 @@ public class LibraryView extends BaseView{
             case "1":
                 printSearchMenu();
                 break;
+
+            case "2":
+            printPlayCountMenu();
+            break;
         
             default:
                 break;
         }
 	}
+
+    private void printPlayCountMenu() {
+
+        clearConsole();
+
+        print("Enter play count number to show a list of songs that have that many sounds or more:");
+
+        int critera = InputReader.getInt();
+
+        List<SongInfo> filteredSongs = new ArrayList<SongInfo>();
+
+        for (SongInfo song : libraryManager.AllSongs()) {           
+
+            if (song.getPlayCount() > critera) {
+                filteredSongs.add(song);
+            }
+        }
+
+        if (filteredSongs.size() > 1) {
+            printSongs(filteredSongs);
+        }
+        else{
+            print("Nothing found!");
+        }
+
+    }
 
     public void printSearchMenu(){
 
@@ -49,8 +79,8 @@ public class LibraryView extends BaseView{
 
         for (SongInfo song : libraryManager.AllSongs()) {           
 
-            if (song.getSongName().toLowerCase().equals(critera.toLowerCase()) 
-            || song.getArtistName().toLowerCase().equals(critera.toLowerCase())) {
+            if (song.getSongName().toLowerCase().contains(critera.toLowerCase()) 
+            || song.getArtistName().toLowerCase().contains(critera.toLowerCase())) {
                 filteredSongs.add(song);
             }
         }
@@ -61,8 +91,17 @@ public class LibraryView extends BaseView{
         else{
             print("Nothing found!");
         }
+
+        returnToMainMenu();
     }
 
+    private void returnToMainMenu() {
+        print("Press enter to return to the main menu...");
 
+        // Hold console for input
+        InputReader.getString();
+
+        libraryViewMainMenu();
+    }
 
 }
