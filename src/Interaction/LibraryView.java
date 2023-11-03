@@ -9,10 +9,12 @@ import Models.SongInfo;
 public class LibraryView extends BaseView{    
 
     private LibraryManager libraryManager;
+    private ConsoleInteraction parentInteraction;
 
-    public LibraryView(LibraryManager libraryManager) {
+    public LibraryView(LibraryManager libraryManager, ConsoleInteraction parentInteraction) {
         super();
         this.libraryManager = libraryManager;
+        this.parentInteraction = parentInteraction;
     }
 
     public void printSongs() {
@@ -23,7 +25,8 @@ public class LibraryView extends BaseView{
         clearConsole();
 
         print("Press 1 to search the library.");
-        print("Press 2 to show a list of songs above a given play count");
+        print("Press 2 to show a list of songs above a given play count.");
+        print("Press 3 to return to the main menu.");
 
         String response = InputReader.getString();
 
@@ -33,10 +36,15 @@ public class LibraryView extends BaseView{
                 break;
 
             case "2":
-            printPlayCountMenu();
+                printPlayCountMenu();
+            break;
+
+            case "3":
+                parentInteraction.returnToMainMenu();
             break;
         
             default:
+                parentInteraction.returnToMainMenu("Invalid response!");
                 break;
         }
 	}
@@ -47,27 +55,29 @@ public class LibraryView extends BaseView{
 
         print("Enter play count number to show a list of songs that have that many sounds or more:");
 
-        int critera = InputReader.getInt();
+        int desiredPlayCount = InputReader.getInt();
 
         List<SongInfo> filteredSongs = new ArrayList<SongInfo>();
 
         for (SongInfo song : libraryManager.AllSongs()) {           
 
-            if (song.getPlayCount() > critera) {
+            if (song.getPlayCount() > desiredPlayCount) 
+            {
                 filteredSongs.add(song);
             }
         }
 
-        if (filteredSongs.size() > 1) {
+        if (filteredSongs.size() > 0) {
             printSongs(filteredSongs);
         }
         else{
-            print("Nothing found!");
+            print("No songs found");
         }
 
+        returnToMainMenu();
     }
 
-    public void printSearchMenu(){
+    private void printSearchMenu(){
 
         clearConsole();
         
@@ -85,11 +95,11 @@ public class LibraryView extends BaseView{
             }
         }
 
-        if (filteredSongs.size() > 1) {
+        if (filteredSongs.size() > 0) {
             printSongs(filteredSongs);
         }
         else{
-            print("Nothing found!");
+            print("No songs found!");
         }
 
         returnToMainMenu();
@@ -103,5 +113,4 @@ public class LibraryView extends BaseView{
 
         libraryViewMainMenu();
     }
-
 }
