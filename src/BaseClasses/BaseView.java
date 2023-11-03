@@ -26,8 +26,8 @@ public class BaseView {
 
 
     public void clearConsole(){
+        
         try {
-
             // Create a ProcessBuilder to execute the "cls" command
             ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", "cls");
             Process process = processBuilder.inheritIO().start();
@@ -35,9 +35,11 @@ public class BaseView {
             // Wait for the process to complete
             int exitCode = process.waitFor();
 
+            // Check for normal termination
             if (exitCode == 0) {
                 // Console succesfully cleared.
             } else {
+                //Report an error incase we couldn't clear for some reason
                 System.err.println("Failed to clear the command prompt window.");
             }
 
