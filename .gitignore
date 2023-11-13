@@ -8,3 +8,4 @@ bin/Interaction/LibraryView.class
 bin/Models/SongInfo.class
 bin/Persistence/JsonHandler.class
 bin/Persistence/SongLibrary.class
+bin/Models/SongInfo.class
