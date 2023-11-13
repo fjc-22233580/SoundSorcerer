@@ -1,0 +1,10 @@
+bin/App.class
+bin/BaseClasses/BaseView.class
+bin/HelperMethods/HelperMethods.class
+bin/Interaction/ConsoleInteraction.class
+bin/Interaction/InputReader.class
+bin/Interaction/LibraryManager.class
+bin/Interaction/LibraryView.class
+bin/Models/SongInfo.class
+bin/Persistence/JsonHandler.class
+bin/Persistence/SongLibrary.class
