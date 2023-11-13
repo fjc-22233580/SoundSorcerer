@@ -12,3 +12,4 @@ bin/Models/SongInfo.class
 bin/Models/SongInfo.class
 bin/BaseClasses/BaseView.class
 bin/Interaction/ConsoleInteraction.class
+bin/App.class
