@@ -27,6 +27,8 @@ public class ConsoleInteraction extends BaseView {
         // Clear the current window console.
         clearConsole();
 
+        printTitleBar();
+
         // Print the main menu.
         print("Press 1 to display all songs.");
         print("Press 2 to add a new song.");
@@ -64,6 +66,8 @@ public class ConsoleInteraction extends BaseView {
 
     private void removeSong(){
         clearConsole();
+
+        printTitleBar();
         
         libraryView.printSongs();
         print("Please enter the number of the song you wish to delete: ");
@@ -102,6 +106,8 @@ public class ConsoleInteraction extends BaseView {
         boolean invalidArgs = false;
 
         clearConsole();
+
+        printTitleBar();
 
         final String Flag = "add:";
 
@@ -157,6 +163,9 @@ public class ConsoleInteraction extends BaseView {
     private void printLibrary(){
 
         clearConsole();
+
+        printTitleBar();
+
         libraryView.printSongs();
         returnToMainMenu();
     }
@@ -167,6 +176,7 @@ public class ConsoleInteraction extends BaseView {
     }
 
     public void returnToMainMenu() {
+        
         print("Press enter to return to the main menu...");
 
         // Hold console for input

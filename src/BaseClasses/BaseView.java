@@ -11,6 +11,11 @@ public class BaseView {
         System.out.println(text);
     }
 
+    public void printTitleBar(){
+        print("#### SOUNDS SORCERER ####");
+        print(" ");
+    }
+
     public void printSong(SongInfo song){
         print(song.getSongName() + " " + song.getArtistName() + " " + song.getPlayCount());
     }
