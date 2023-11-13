@@ -12,7 +12,7 @@ public class ConsoleInteraction extends BaseView {
         super();
         this.libraryManager = libraryManager;
 
-        libraryView = new LibraryView(libraryManager);
+        libraryView = new LibraryView(libraryManager, this);
 
         // Show the main menu, this is the fist menu to be displayed. 
         printMainMenu();
@@ -161,12 +161,12 @@ public class ConsoleInteraction extends BaseView {
         returnToMainMenu();
     }
 
-    private void returnToMainMenu(String extraMessage) {
+    public void returnToMainMenu(String extraMessage) {
         print(extraMessage);
         returnToMainMenu();
     }
 
-    private void returnToMainMenu() {
+    public void returnToMainMenu() {
         print("Press enter to return to the main menu...");
 
         // Hold console for input
