@@ -12,7 +12,7 @@ public class App {
     // TODO - Other ideas?
     // TODO - Random generator for song info data?  
     // TODO - Improve uses of "returnToMainMenu" method by passing in the method to be taken to  
-    // TODO - Move song print method from Baseview to SongInfo
+    // TODO - inbuilt json library https://www.baeldung.com/java-serialization-approaches
 
     public static void main(String[] args) throws Exception {
        
