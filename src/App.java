@@ -5,7 +5,6 @@ public class App {
 
     // TODO - Improve comments.
     // TODO - Add GUIDs to SongInfo?
-    // TODO - Add sorting when displaying list - into LibraryView class
     // TODO - Fix bug when pressing enter with no value, after first delete song prompt
     // TODO - Other ideas?
     // TODO - Random generator for song info data?  
