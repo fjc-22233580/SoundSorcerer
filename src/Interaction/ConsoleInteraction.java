@@ -37,8 +37,8 @@ public class ConsoleInteraction extends BaseView {
         print("Press x to close.");
 
         // Get the users response and process.
-        String reponse = InputReader.getString();
-        switch (reponse) {
+        String response = InputReader.getString();
+        switch (response) {
             case "1":
                 printLibrary();
                 break;
