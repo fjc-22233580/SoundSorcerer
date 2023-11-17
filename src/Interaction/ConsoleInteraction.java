@@ -72,35 +72,61 @@ public class ConsoleInteraction extends BaseView {
         
         libraryView.printSongs();
         print("Please enter the number of the song you wish to delete: ");
+        print("... or press x to return to main menu. ");
 
-        int userIndex = InputReader.getInt() - 1;
-        int lastIndex = libraryManager.AllSongs().size() - 1;
-        
-        // Check the user supplied index is between the min/max index.
-        if (userIndex >= 0 && userIndex <= lastIndex) {
-
-            SongInfo selectesSong = libraryManager.AllSongs().get(userIndex);
-
-            print("Selected song: " + selectesSong.getSongName());
-            print("Are you sure wish to delete this song? Y/N");
-
-            String response = InputReader.getString();
-
-            if (response.equalsIgnoreCase("y")) {
-
-                libraryManager.removeSongAtIndex(userIndex);
-                returnToMainMenu("Song deleted!");
-            } else {
+        // Validate user response
+        String response = InputReader.getString();
+        if (HelperMethods.isStringNullOrEmpty(response) || HelperMethods.containsAlphabet(response)) {
+            
+            // Check if user chosen to return to main menu
+            if (response.equals("x")) {
                 returnToMainMenu();
             }
 
-        } else {
             returnToMainMenu("Invalid input!");
+        } else {
+
+            // Check we can parse the response to an int
+            Integer userIndex = HelperMethods.tryParseInt(response.trim());
+            if (userIndex != null) {
+
+                // Convert user index to zero-based index. 
+                userIndex --;
+                // Get index of last element
+                int lastItemIndex = libraryManager.AllSongs().size() - 1;
+
+                // Check the user supplied index is between the min/max index.
+                if (userIndex >= 0 && userIndex <= lastItemIndex) {
+
+                    // Get the song at the selected index.
+                    SongInfo selectesSong = libraryManager.AllSongs().get(userIndex);
+
+                    // Print selected song and deletion confirmation message
+                    print("Selected song: " + selectesSong.getSongName());
+                    print("Are you sure wish to delete this song? Y/N");
+
+                    // Check user response
+                    String deletionResponse = InputReader.getString();
+                    if (deletionResponse.equalsIgnoreCase("y")) {
+
+                        // Remove selected index
+                        libraryManager.removeSongAtIndex(userIndex);
+                        returnToMainMenu("Song deleted!");
+
+                    } else {
+
+                        // User enter something other than yes.
+                        returnToMainMenu();
+                    }
+                                        
+                } else { 
+
+                    // User selected index is outside of the number of songs in our library.
+                    returnToMainMenu("Argument out of range!"); 
+                }
+            } 
         }
-
-    }
-
-   
+    }   
 
     private void addNewSong(){
 
