@@ -60,6 +60,7 @@ public class ConsoleInteraction extends BaseView {
                 break;
 
             default:
+                returnToMainMenu("Invalid response!");
                 break;
         }        
     }
