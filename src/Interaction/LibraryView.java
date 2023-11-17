@@ -1,6 +1,8 @@
 package Interaction;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import BaseClasses.BaseView;
@@ -26,7 +28,8 @@ public class LibraryView extends BaseView{
 
         print("Press 1 to search the library.");
         print("Press 2 to show a list of songs above a given play count.");
-        print("Press 3 to return to the main menu.");
+        print("Press 3 to show library sorting menu.");
+        print("Press 4 to return to the main menu.");
 
         String response = InputReader.getString();
 
@@ -40,6 +43,10 @@ public class LibraryView extends BaseView{
             break;
 
             case "3":
+                printLibrarySortingMenu();
+            break;
+
+            case "4":
                 parentInteraction.returnToMainMenu();
             break;
         
@@ -48,6 +55,42 @@ public class LibraryView extends BaseView{
                 break;
         }
 	}
+
+    private void printLibrarySortingMenu(){
+
+        clearConsole(); 
+        printTitleBar();
+
+        print("Press 1 to sort alphabetically by song name.");
+        print("Press 2 to sort alphabetically by artist name.");
+        print("Press 3 to sort alphabetically by artist name.");
+        
+        String responseString = InputReader.getString();
+
+        switch (responseString) {
+            case "1":
+                Collections.sort(libraryManager.AllSongs(), Comparator.comparing(SongInfo::getArtistName).reversed());
+                printSongs();
+                break;
+
+            case "2":
+                Collections.sort(libraryManager.AllSongs(), Comparator.comparing(SongInfo::getSongName).reversed());
+                printSongs();
+                break;
+
+            case "3":
+                Collections.sort(libraryManager.AllSongs(), Comparator.comparing(SongInfo::getPlayCount));
+                printSongs();
+                break;
+        
+            default:
+                parentInteraction.returnToMainMenu("Invalid response!");
+                break;
+        }
+
+        returnToMainMenu();
+
+    }
 
     private void printPlayCountMenu() {
 
