@@ -13,3 +13,7 @@ bin/Models/SongInfo.class
 bin/BaseClasses/BaseView.class
 bin/Interaction/ConsoleInteraction.class
 bin/App.class
+bin/App.class
+bin/BaseClasses/BaseView.class
+bin/Interaction/ConsoleInteraction.class
+bin/Models/SongInfo.class
