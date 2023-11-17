@@ -11,7 +11,6 @@ public class App {
     public static void main(String[] args) throws Exception {
        
         LibraryManager libraryManager = new LibraryManager();
-
         ConsoleInteraction ui = new ConsoleInteraction(libraryManager);
     }
 }
