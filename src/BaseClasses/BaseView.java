@@ -7,6 +7,9 @@ import Models.SongInfo;
 
 public class BaseView {   
 
+    /** Prints the given text followed a new line char.
+     * @param text The string to print.
+     */
     public void print(String text) {
         System.out.println(text);
     }
@@ -31,7 +34,7 @@ public class BaseView {
 
 
     public void clearConsole(){
-        
+
         try {
             // Create a ProcessBuilder to execute the "cls" command
             ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", "cls");
@@ -40,16 +43,12 @@ public class BaseView {
             // Wait for the process to complete
             int exitCode = process.waitFor();
 
-            // Check for normal termination
-            if (exitCode == 0) {
-                // Console succesfully cleared.
-            } else {
-                //Report an error incase we couldn't clear for some reason
-                System.err.println("Failed to clear the command prompt window.");
-            }
+            // Report an error incase we couldn't clear for some reason
+            if (exitCode != 0) { print("Failed to clear the command prompt window."); }
 
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+        } catch (IOException | InterruptedException exc) {
+            print("Unknown error - please restart!");
+            exc.printStackTrace();
         }
     }
 
