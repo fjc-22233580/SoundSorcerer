@@ -25,6 +25,21 @@ public class HelperMethods {
         return value;
     }
 
+    /** Check that a given strings contains atleast 1 alphabetical character
+     * @param text the given text
+     * @return true if string contains an alphabetical character, else false.
+     */
+    public static boolean containsAlphabet(String text){
+       
+        for (char c : text.toCharArray()) {
+            if (Character.isAlphabetic(c)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /** Helper method which attempts to parse given text to e double
      * 
      * @param text the text to be parsed to an double
