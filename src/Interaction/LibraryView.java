@@ -20,7 +20,7 @@ public class LibraryView extends BaseView{
     }
 
     public void printSongs() {
-       printSongs(libraryManager.AllSongs());
+       printSongs(libraryManager.getAllSongs());
     }
 
 	public void libraryViewMainMenu() {
@@ -69,17 +69,17 @@ public class LibraryView extends BaseView{
 
         switch (responseString) {
             case "1":
-                Collections.sort(libraryManager.AllSongs(), Comparator.comparing(SongInfo::getArtistName).reversed());
+                Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getArtistName).reversed());
                 printSongs();
                 break;
 
             case "2":
-                Collections.sort(libraryManager.AllSongs(), Comparator.comparing(SongInfo::getSongName).reversed());
+                Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getSongName).reversed());
                 printSongs();
                 break;
 
             case "3":
-                Collections.sort(libraryManager.AllSongs(), Comparator.comparing(SongInfo::getPlayCount));
+                Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getPlayCount));
                 printSongs();
                 break;
         
@@ -102,7 +102,7 @@ public class LibraryView extends BaseView{
 
         List<SongInfo> filteredSongs = new ArrayList<SongInfo>();
 
-        for (SongInfo song : libraryManager.AllSongs()) {           
+        for (SongInfo song : libraryManager.getAllSongs()) {           
 
             if (song.getPlayCount() > desiredPlayCount) 
             {
@@ -130,7 +130,7 @@ public class LibraryView extends BaseView{
 
         List<SongInfo> filteredSongs = new ArrayList<SongInfo>();
 
-        for (SongInfo song : libraryManager.AllSongs()) {           
+        for (SongInfo song : libraryManager.getAllSongs()) {           
 
             if (song.getSongName().toLowerCase().contains(critera.toLowerCase()) 
             || song.getArtistName().toLowerCase().contains(critera.toLowerCase())) {
