@@ -1,11 +1,10 @@
 package Interaction;
 import java.util.Scanner;
-
 import HelperMethods.HelperMethods;
 
 /**
 * This class provides methods to get user input from the console, 
-* it currently supports string, int, and double.
+* it currently supports string, and int.
 */
 public class InputReader {
 
@@ -20,18 +19,11 @@ public class InputReader {
 
     /**
     * Returns the integer that the user has entered.
+    * If the user has not entered an integer, it will return null.
     */
     public static Integer getInt(){
         Integer value = HelperMethods.tryParseInt(getLine());
         return value;      
-    }
-
-    /**
-    * Returns the double that the user has entered.
-    */
-    public static Double getDouble(){
-        double inputStr = reader.nextDouble();
-        return inputStr;      
     }
 
     /** Gets the next line from the terminal,
@@ -42,7 +34,5 @@ public class InputReader {
     private static String getLine(){
         String inputStr = reader.nextLine();
         return inputStr;
-    }
-
-    
+    }    
 }
