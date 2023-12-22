@@ -2,28 +2,40 @@ package BaseClasses;
 
 import java.io.IOException;
 import java.util.List;
-
 import Models.SongInfo;
 
-public class BaseView {   
+/**
+ * The BaseView class (abstract) represents the base view for the SoundSorcerer ConsoleInteraction and LibraryView .
+ * It provides methods for printing text, displaying the title bar, printing song information,
+ * printing a list of songs, and clearing the console.
+ */
+public abstract class BaseView {   
 
     /** Prints the given text followed a new line char.
      * @param text The string to print.
      */
-    public void print(String text) {
+    protected void print(String text) {
         System.out.println(text);
     }
 
-    public void printTitleBar(){
+    /** Prints the title bar - used to keep the title above all other output.
+     */
+    protected void printTitleBar(){
         print("#### SOUNDS SORCERER ####");
         print(" ");
     }
-
-    public void printSong(SongInfo song){
+    
+    /** Prints all variables for a given song.
+     */
+    protected void printSong(SongInfo song){
         print(song.getSongName() + " " + song.getArtistName() + " " + song.getPlayCount());
     }
 
-    public void printSongs(List<SongInfo> songs) {
+    /**
+     * Prints song infor for each song list.     *
+     * @param songs the list of songs to be printed
+     */
+    protected void printSongs(List<SongInfo> songs) {
         int count = 1;
 
         for (SongInfo songInfo : songs) {
@@ -32,8 +44,12 @@ public class BaseView {
         }
     }
 
-
-    public void clearConsole(){
+    /**
+     * Clears the console window.
+     * This method uses the "cls" command in the Windows command prompt to clear the console.
+     * If the command execution fails, an error message is printed.
+     */
+    protected void clearConsole(){
 
         try {
             // Create a ProcessBuilder to execute the "cls" command
@@ -51,5 +67,4 @@ public class BaseView {
             exc.printStackTrace();
         }
     }
-
 }
