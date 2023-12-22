@@ -13,9 +13,9 @@ import java.util.UUID;
 
 public class SongGenerator {
     
-    private List<String> songTitles = new ArrayList();
-    private List<String> firstNames = new ArrayList();
-    private List<String> lastNames = new ArrayList();
+    private List<String> songTitles = new ArrayList<String>();
+    private List<String> firstNames = new ArrayList<String>();
+    private List<String> lastNames = new ArrayList<String>();
 
     private final Path SONG_TITLES_PATH = Paths.get(System.getProperty("user.dir"),"random", "RandomSongNames.csv");
     private final Path ARTIST_NAMES_PATH = Paths.get(System.getProperty("user.dir"),"random", "RandomArtistNames.csv");
@@ -65,7 +65,8 @@ public class SongGenerator {
                     
                     while ((line = br.readLine()) != null) {
                         
-                        songTitles.add(line); 
+                        String songTitle = line.replace(",", "");
+                        songTitles.add(songTitle); 
                     }
         
                 } catch (Exception e) {
