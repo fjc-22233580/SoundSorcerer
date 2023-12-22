@@ -106,13 +106,13 @@ public class ConsoleInteraction extends BaseView {
                 // Convert user index to zero-based index. 
                 userIndex --;
                 // Get index of last element
-                int lastItemIndex = libraryManager.AllSongs().size() - 1;
+                int lastItemIndex = libraryManager.getAllSongs().size() - 1;
 
                 // Check the user supplied index is between the min/max index.
                 if (userIndex >= 0 && userIndex <= lastItemIndex) {
 
                     // Get the song at the selected index.
-                    SongInfo selectesSong = libraryManager.AllSongs().get(userIndex);
+                    SongInfo selectesSong = libraryManager.getAllSongs().get(userIndex);
 
                     // Print selected song and deletion confirmation message
                     print("Selected song: " + selectesSong.getSongName());
