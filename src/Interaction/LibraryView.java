@@ -1,16 +1,22 @@
 package Interaction;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
 import BaseClasses.BaseView;
 import Models.SongInfo;
 
+/**
+ * This class represents a view for interacting with the song library - mainly for list operations.
+ * It provides methods for printing songs, displaying the this views specific main menu, sorting the library, searching for songs,
+ * and returning to the main menu.
+ */
 public class LibraryView extends BaseView{    
 
+    // Hold a reference to the library manager so we can access the library
     private LibraryManager libraryManager;
+
+    // Hold a reference to the main menu interaction so we can return to it
     private ConsoleInteraction parentInteraction;
 
     public LibraryView(LibraryManager libraryManager, ConsoleInteraction parentInteraction) {
@@ -19,12 +25,9 @@ public class LibraryView extends BaseView{
         this.parentInteraction = parentInteraction;
     }
 
-    public void printSongs() {
-       printSongs(libraryManager.getAllSongs());
-    }
-
 	public void libraryViewMainMenu() {
         clearConsole();
+        printTitleBar();
 
         print("Press 1 to search the library.");
         print("Press 2 to show a list of songs above a given play count.");
@@ -40,21 +43,21 @@ public class LibraryView extends BaseView{
 
             case "2":
                 printPlayCountMenu();
-            break;
+                break;
 
             case "3":
                 printLibrarySortingMenu();
-            break;
+                break;
 
             case "4":
                 parentInteraction.returnToMainMenu();
-            break;
-        
+                break;
+
             default:
                 parentInteraction.returnToMainMenu("Invalid response!");
                 break;
         }
-	}
+    }
 
     private void printLibrarySortingMenu(){
 
@@ -70,21 +73,21 @@ public class LibraryView extends BaseView{
         switch (responseString) {
             case "1":
                 Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getArtistName).reversed());
-                printSongs();
+                printSongs(libraryManager.getAllSongs());
                 break;
 
             case "2":
                 Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getSongName).reversed());
-                printSongs();
+                printSongs(libraryManager.getAllSongs());
                 break;
 
             case "3":
                 Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getPlayCount));
-                printSongs();
+                printSongs(libraryManager.getAllSongs());
                 break;
         
             default:
-                parentInteraction.returnToMainMenu("Invalid response!");
+                print("Invalid response!");
                 break;
         }
 
@@ -94,28 +97,30 @@ public class LibraryView extends BaseView{
 
     private void printPlayCountMenu() {
 
+        // Clear console and print title bar
         clearConsole();
+        printTitleBar();
+        print("Enter play count number to show a list of songs that have that many plays or more:");
+        
+        // Get and validate user input
+        Integer desiredPlayCount = InputReader.getInt();
+        if(desiredPlayCount != null) {
 
-        print("Enter play count number to show a list of songs that have that many sounds or more:");
-
-        int desiredPlayCount = InputReader.getInt();
-
-        List<SongInfo> filteredSongs = new ArrayList<SongInfo>();
-
-        for (SongInfo song : libraryManager.getAllSongs()) {           
-
-            if (song.getPlayCount() > desiredPlayCount) 
-            {
-                filteredSongs.add(song);
+            List<SongInfo> filteredSongs = new ArrayList<SongInfo>();    
+            for (SongInfo song : libraryManager.getAllSongs()) {           
+    
+                if (song.getPlayCount() > desiredPlayCount) 
+                {
+                    filteredSongs.add(song);
+                }
             }
-        }
+    
+            if (filteredSongs.size() > 0) {
+                printSongs(filteredSongs);
+            }
+            else { print("No songs found"); }
 
-        if (filteredSongs.size() > 0) {
-            printSongs(filteredSongs);
-        }
-        else{
-            print("No songs found");
-        }
+        } else { print("Invalid input!"); } // User entered an invalid input
 
         returnToMainMenu();
     }
@@ -123,6 +128,7 @@ public class LibraryView extends BaseView{
     private void printSearchMenu(){
 
         clearConsole();
+        printTitleBar();
         
         print("Enter search criteria to find songs or artists that match:");
 
@@ -130,10 +136,10 @@ public class LibraryView extends BaseView{
 
         List<SongInfo> filteredSongs = new ArrayList<SongInfo>();
 
-        for (SongInfo song : libraryManager.getAllSongs()) {           
+        for (SongInfo song : libraryManager.getAllSongs()) {
 
-            if (song.getSongName().toLowerCase().contains(critera.toLowerCase()) 
-            || song.getArtistName().toLowerCase().contains(critera.toLowerCase())) {
+            if (song.getSongName().toLowerCase().contains(critera.toLowerCase())
+                    || song.getArtistName().toLowerCase().contains(critera.toLowerCase())) {
                 filteredSongs.add(song);
             }
         }
