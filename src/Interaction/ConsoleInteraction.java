@@ -185,7 +185,7 @@ public class ConsoleInteraction extends BaseView {
                         && HelperMethods.isStringNullOrEmpty(artistName) == false
                         && playCount != null) {
                     
-                    libraryManager.addSong(songTitle, artistName, playCount);
+                    libraryManager.createSong(songTitle, artistName, playCount);
                     print("New Song successfully added!");
                     returnToMainMenu();
 

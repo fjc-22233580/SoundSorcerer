@@ -16,12 +16,10 @@ public class LibraryManager {
         return songLibrary.AllSongs();
     }
 
-    public void addSong(String songTitle, String artistName, int playCount){
+    public void createSong(String songTitle, String artistName, int playCount){
 
         SongInfo addedSong = new SongInfo(songTitle, artistName, playCount);
-
         songLibrary.addSong(addedSong);
-
     }
 
     public void removeSongAtIndex(int userIndex) {
