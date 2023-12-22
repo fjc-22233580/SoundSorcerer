@@ -10,7 +10,10 @@ import HelperMethods.HelperMethods;
  */
 public class ConsoleInteraction extends BaseView {
     
+    // Hold a reference to the library manager.
     private LibraryManager libraryManager;
+
+    // Hold a reference to the library view so we can navigate to it
     private LibraryView libraryView;
 
     public ConsoleInteraction(LibraryManager libraryManager) {

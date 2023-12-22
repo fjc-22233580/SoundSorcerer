@@ -7,10 +7,8 @@ import Interaction.LibraryManager;
  * to manage the library and interact with the user through the console.
  */
 public class App {
-
-    // TODO - Improve comments.
+    
     // TODO - Add GUIDs to SongInfo?
-    // TODO - Random generator for song info data?  
     // TODO - Improve uses of "returnToMainMenu" method by passing in the method to be taken to  
 
     public static void main(String[] args) throws Exception {       

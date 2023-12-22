@@ -8,6 +8,7 @@ import HelperMethods.HelperMethods;
 */
 public class InputReader {
 
+    // Scanner object to read user input from the console.
     private static Scanner reader = new Scanner(System.in);
 
     /**
