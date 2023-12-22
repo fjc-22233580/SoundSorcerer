@@ -6,14 +6,11 @@ package Models;
  */
 public class SongInfo{    
    
-    private String songName;   
-
-    private String artistName;    
-
-    private int playCount;    
-
-    private String filePath;    
-
+    // Fields that hold the relevant information for a song.
+    private String songName; 
+    private String artistName; 
+    private int playCount;  
+    private String filePath;  
 
     /** 
      * Constructor - instantiates this class with given args. 
@@ -27,6 +24,8 @@ public class SongInfo{
         this.playCount = playCount;
     }
 
+    // #region Song Info Getters and Setters
+    
     public String getSongName() {
         return songName;
     }
@@ -47,4 +46,5 @@ public class SongInfo{
         this.filePath = filePath;
     }
 
+    // #endregion
 }
