@@ -1,7 +1,9 @@
 package HelperMethods;
-
 import java.io.File;
 
+/**
+ * This class contains helper methods for various operations.
+ */
 public class HelperMethods {
 
     /** Helper method which attempts to parse given text to an integer
