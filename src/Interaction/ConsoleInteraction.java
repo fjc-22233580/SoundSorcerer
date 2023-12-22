@@ -1,4 +1,6 @@
 package Interaction;
+import java.util.UUID;
+
 import BaseClasses.BaseView;
 import Models.SongInfo;
 import HelperMethods.HelperMethods;
@@ -37,9 +39,10 @@ public class ConsoleInteraction extends BaseView {
 
         // Print the main menu.
         print("Press 1 to display all songs.");
-        print("Press 2 to add a new song.");
-        print("Press 3 to delete a song.");
-        print("Press 4 to go to list sorting menu.");
+        print("Press 2 to create a random song.");
+        print("Press 3 to add a new song.");
+        print("Press 4 to delete a song.");
+        print("Press 5 to go to list sorting menu.");
         print("Press x to close.");
 
         // Get the users response and process.
@@ -51,14 +54,18 @@ public class ConsoleInteraction extends BaseView {
                 break;
 
             case "2":
+                addRandomSong();
+                break;
+
+            case "3":
                 addNewSong();
                 break;
             
-            case "3":
+            case "4":
                 removeSong();
                 break;
 
-            case "4":
+            case "5":
                 libraryView.libraryViewMainMenu();
                 break;
 
@@ -70,6 +77,17 @@ public class ConsoleInteraction extends BaseView {
                 returnToMainMenu("Invalid response!");
                 break;
         }        
+    }
+
+    private void addRandomSong() {
+
+        clearConsole();
+        printTitleBar();
+
+        SongInfo randomSong = libraryManager.createRandomSong();
+        printSong(randomSong);
+
+        returnToMainMenu();
     }
 
     /**
@@ -188,7 +206,9 @@ public class ConsoleInteraction extends BaseView {
                         && HelperMethods.isStringNullOrEmpty(artistName) == false
                         && playCount != null) {
                     
-                    libraryManager.createSong(songTitle, artistName, playCount);
+                    UUID guid = UUID.randomUUID();
+                            
+                    libraryManager.createSong(songTitle, artistName, playCount, guid);
                     print("New Song successfully added!");
                     returnToMainMenu();
 

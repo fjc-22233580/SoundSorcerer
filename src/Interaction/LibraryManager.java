@@ -1,6 +1,9 @@
 package Interaction;
 import Persistence.SongLibrary;
 import java.util.List;
+import java.util.UUID;
+
+import Models.SongGenerator;
 import Models.SongInfo;
 
 /**
@@ -13,9 +16,13 @@ public class LibraryManager {
     /** The SongLibrary object which contains the list of all songs */
     private SongLibrary songLibrary;
 
+    // Generates a random song name and artist name.
+    SongGenerator songGenerator;
+
     public LibraryManager() {
         super();
         songLibrary = new SongLibrary();
+        songGenerator = new SongGenerator();
     }
 
     /**
@@ -33,10 +40,23 @@ public class LibraryManager {
      * @param artistName the name of the artist
      * @param playCount  the play count of the song
      */
-    public void createSong(String songTitle, String artistName, int playCount) {
+    public void createSong(String songTitle, String artistName, int playCount, UUID guid) {
 
-        SongInfo addedSong = new SongInfo(songTitle, artistName, playCount);
+        SongInfo addedSong = new SongInfo(songTitle, artistName, playCount, guid);
         songLibrary.addSong(addedSong);
+    }
+
+    /**
+     * Creates a new song with a random title, artist name, and play count, and
+     * adds it to the library. 
+     * Also returns the song that was created, so it can be printed in ConsoleInteration.
+     */
+    public SongInfo createRandomSong() {
+
+        SongInfo randomSong = songGenerator.generateRandomSong();
+        songLibrary.addSong(randomSong);
+
+        return randomSong;
     }
 
     /**

@@ -5,6 +5,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import HelperMethods.HelperMethods;
 import Models.SongInfo;
 
@@ -25,7 +27,7 @@ public class SongLibrary{
      * regardless of the operating system the application is running on.
      * ... Hopefully!
     */
-    private final Path songsPath = Paths.get(System.getProperty("user.dir"), "songs");
+    private final Path SONGS_PATH = Paths.get(System.getProperty("user.dir"), "songs");
 
     /** Constructor for the SongLibrary class. 
      * First checks the songs folder existense, if it doesn't exist then a runtime exception will be thrown.
@@ -33,7 +35,7 @@ public class SongLibrary{
      */
     public SongLibrary() {
 
-        if (Files.notExists(songsPath)) {
+        if (Files.notExists(SONGS_PATH)) {
             throw new RuntimeException("Songs folder does not exist");                   
         }
 
@@ -53,7 +55,7 @@ public class SongLibrary{
      */
     public void addSong(SongInfo song){
         allSongs.add(song);
-        JsonHandler.saveToJson(song, songsPath);
+        JsonHandler.saveToJson(song, SONGS_PATH);
     }
 
     /**
@@ -82,7 +84,7 @@ public class SongLibrary{
     private void restoreAllSongs(){
 
         // Get a list of all files in the songs folder
-        File folder = new File(songsPath.toString());
+        File folder = new File(SONGS_PATH.toString());
         File[] listOfFiles = folder.listFiles();
         
         // Check we have files in the folder
@@ -127,9 +129,11 @@ public class SongLibrary{
             String artistName = "Artist " + i;
             int count = i * i;
 
-            SongInfo dummy = new SongInfo(songName, artistName, count);
+            UUID guid = UUID.randomUUID();
 
-            JsonHandler.saveToJson(dummy, songsPath);
+            SongInfo dummy = new SongInfo(songName, artistName, count, guid);
+
+            JsonHandler.saveToJson(dummy, SONGS_PATH);
         }
     }
 

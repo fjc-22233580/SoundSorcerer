@@ -27,7 +27,7 @@ public class JsonHandler {
         Gson gson = new GsonBuilder().create();
 
         // Construct the file name for the JSON file
-        String fileName = Paths.get(folderPath.toString(), song.getSongName() + ".json").toString();
+        String fileName = Paths.get(folderPath.toString(),song.getGuid().toString() + "." + song.getSongName() + ".json").toString();
 
         // Set the file path for the SongInfo object, this may be used later for file deletion.
         song.setFilePath(fileName);
