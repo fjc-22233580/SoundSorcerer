@@ -24,7 +24,7 @@ public class JsonHandler {
 
         // Create a Gson object (used to convert Java objects to JSON)
         // Note: This is a from the Gson library, not a class we created.
-        Gson gson = new GsonBuilder().create();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
         // Construct the file name for the JSON file
         String fileName = Paths.get(folderPath.toString(),song.getGuid().toString() + "." + song.getSongName() + ".json").toString();
@@ -66,6 +66,7 @@ public class JsonHandler {
         
             FileReader reader = new FileReader(songFilePath);            
             restoredSong = gson.fromJson(reader, SongInfo.class);
+            restoredSong.setFilePath(songFilePath);
             reader.close();
 
         } catch (IOException e) {

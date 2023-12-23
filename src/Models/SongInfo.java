@@ -1,18 +1,27 @@
 package Models;
 import java.util.UUID;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * This class is the model for song related information. 
  * Including holding its filepath which gets set after this is de-persisted.
  */
 public class SongInfo{    
    
-    // Fields that hold the relevant information for a song.
+    // Fields that hold the relevant information for a song, and are exposed to Gson so will be saved/restored
+    @Expose
     private String songName; 
+    @Expose
     private String artistName; 
+    @Expose
     private int playCount;  
-    private String filePath;
+    @Expose
     private UUID guid;  
+
+    // The file path for the song, this is not exposed to Gson so will not be saved/restored,
+    // but is used to delete the file when the song is removed from the library.
+    private String filePath;
     
     /** 
      * Constructor - instantiates this class with given args. 
