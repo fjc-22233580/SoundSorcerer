@@ -30,7 +30,7 @@ public class SongGenerator {
 
     // The minimum and maximum number of plays a song can have
     private final int MIN_PLAY_COUNT = 1000;
-    private final int MAX_PLAY_COUNT = 10000000;
+    private final int MAX_PLAY_COUNT = 100000000;
 
     /**
      * Constructor for the SongGenerator class.
