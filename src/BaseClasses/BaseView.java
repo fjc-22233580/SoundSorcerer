@@ -66,14 +66,19 @@ public abstract class BaseView {
         // Print the table headers with padding
         String namePadding = getPadding(ARTIST_NAME, maxSongArtistWidth);
         String titlePadding = getPadding(SONG_NAME, maxSongNameWidth);
-        print("   " + SONG_NAME + titlePadding + "| " + ARTIST_NAME + namePadding + "| " + PLAY_COUNT);
+        print("    " + SONG_NAME + titlePadding + "| " + ARTIST_NAME + namePadding + "| " + PLAY_COUNT);
 
         // Print each song with padding - so it appears like a table
         for (SongInfo songInfo : songs) {
 
             String songNamePadding = getPadding(songInfo.getSongName(), maxSongNameWidth);
-            String songArtistPadding = getPadding(songInfo.getArtistName(), maxSongArtistWidth);      
-            print(count + ". " + songInfo.getSongName() + songNamePadding + "| " + songInfo.getArtistName() + songArtistPadding + "| " + songInfo.getPlayCount());
+            String songArtistPadding = getPadding(songInfo.getArtistName(), maxSongArtistWidth);  
+            
+            // Format the row number and play count with commas and leading zeros
+            String formattedRowNumber = String.format("%02d", count);
+            String formattedPlayCount = String.format("%,d", songInfo.getPlayCount());
+            
+            print(formattedRowNumber + ": " + songInfo.getSongName() + songNamePadding + "| " + songInfo.getArtistName() + songArtistPadding + "| " + formattedPlayCount);
             count++;
         }
     }
