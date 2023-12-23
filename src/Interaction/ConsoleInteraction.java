@@ -79,12 +79,19 @@ public class ConsoleInteraction extends BaseView {
         }        
     }
 
+    /**
+     * Adds a randomly generated song to the library and prints the song information.
+     */
     private void addRandomSong() {
 
+        // Clear the current window console and print the title bar.
         clearConsole();
         printTitleBar();
 
+        // Get a randomly generated song from the library manager.
         SongInfo randomSong = libraryManager.createRandomSong();
+
+        print("Random song created:");
         printSong(randomSong);
 
         returnToMainMenu();
