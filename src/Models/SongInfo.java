@@ -28,6 +28,7 @@ public class SongInfo{
      * @param songName The name of the song.
      * @param artistName The name of the artist.
      * @param playCount The number of times this song has been played. 
+     * @param guid The guid for this song.
      */
     public SongInfo(String songName, String artistName, int playCount, UUID guid) {
         this.songName = songName;
