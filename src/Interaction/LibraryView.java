@@ -92,13 +92,13 @@ public class LibraryView extends BaseView {
 
             // Sort alphabetically by artist name
             case "1":
-                Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getArtistName).reversed());
+                Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getArtistName));
                 printSongs(libraryManager.getAllSongs());
                 break;
 
             // Sort alphabetically by song name
             case "2":
-                Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getSongName).reversed());
+                Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getSongName));
                 printSongs(libraryManager.getAllSongs());
                 break;
 
