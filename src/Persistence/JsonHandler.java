@@ -66,7 +66,6 @@ public class JsonHandler {
         
             FileReader reader = new FileReader(songFilePath);            
             restoredSong = gson.fromJson(reader, SongInfo.class);
-            restoredSong.setFilePath(songFilePath);
             reader.close();
 
         } catch (IOException e) {
