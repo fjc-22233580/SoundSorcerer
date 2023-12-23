@@ -32,10 +32,11 @@ public abstract class BaseView {
     }
 
     /**
-     * Prints song infor for each song list.     *
+     * Prints all song info for each song in the given list,
+     * will be printed in a table format with headers and row numbers.
      * @param songs the list of songs to be printed
      */
-    protected void printSongs(List<SongInfo> songs) {
+    protected void printSongsInTableFormat(List<SongInfo> songs) {
 
         // Table headers
         final String SONG_NAME = "Song Name";

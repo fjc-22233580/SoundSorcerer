@@ -93,19 +93,19 @@ public class LibraryView extends BaseView {
             // Sort alphabetically by artist name
             case "1":
                 Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getArtistName));
-                printSongs(libraryManager.getAllSongs());
+                printSongsInTableFormat(libraryManager.getAllSongs());
                 break;
 
             // Sort alphabetically by song name
             case "2":
                 Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getSongName));
-                printSongs(libraryManager.getAllSongs());
+                printSongsInTableFormat(libraryManager.getAllSongs());
                 break;
 
             // Sort by play count
             case "3":
                 Collections.sort(libraryManager.getAllSongs(), Comparator.comparing(SongInfo::getPlayCount));
-                printSongs(libraryManager.getAllSongs());
+                printSongsInTableFormat(libraryManager.getAllSongs());
                 break;
 
             default:
@@ -145,7 +145,7 @@ public class LibraryView extends BaseView {
 
             // Print the list of songs, if we found any
             if (filteredSongs.size() > 0) {
-                printSongs(filteredSongs);
+                printSongsInTableFormat(filteredSongs);
 
             } else { print("No songs found"); }
 
@@ -180,7 +180,7 @@ public class LibraryView extends BaseView {
         
         // Print the list of songs, if we found any
         if (filteredSongs.size() > 0) {
-            printSongs(filteredSongs);
+            printSongsInTableFormat(filteredSongs);
         } else {
             print("No songs found!");
         }

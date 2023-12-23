@@ -102,7 +102,7 @@ public class ConsoleInteraction extends BaseView {
         printTitleBar();
         
         // Print all songs in the library
-        printSongs(libraryManager.getAllSongs());
+        printSongsInTableFormat(libraryManager.getAllSongs());
 
         // Print instructions
         print("Please enter the number of the song you wish to delete: ");
@@ -238,7 +238,7 @@ public class ConsoleInteraction extends BaseView {
 
         printTitleBar();
 
-        printSongs(libraryManager.getAllSongs());
+        printSongsInTableFormat(libraryManager.getAllSongs());
         returnToMainMenu();
     }
 
