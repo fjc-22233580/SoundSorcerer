@@ -1,6 +1,7 @@
 package BaseClasses;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import Models.SongInfo;
 
@@ -36,12 +37,61 @@ public abstract class BaseView {
      * @param songs the list of songs to be printed
      */
     protected void printSongs(List<SongInfo> songs) {
+
+        // Table headers
+        final String SONG_NAME = "Song Name";
+        final String ARTIST_NAME = "Song Title";
+        final String PLAY_COUNT = "Play Count";
+
+        // Song Count
         int count = 1;
 
+        // Max string lengths - used to calculate padding
+        int maxSongNameWidth = 0;
+        int maxSongArtistWidth = 0;
+
+        // Find the max string lengths for each column
         for (SongInfo songInfo : songs) {
-            print(count + ". " + songInfo.getSongName() + " " + songInfo.getArtistName() + " " + songInfo.getPlayCount());
+
+            int currentSongNameWidth = songInfo.getSongName().length();
+            if (currentSongNameWidth > maxSongNameWidth) {
+                maxSongNameWidth = currentSongNameWidth;                
+            }
+            
+            int currentSongArtistWidth = songInfo.getArtistName().length();
+            if (currentSongArtistWidth > maxSongArtistWidth) {
+                maxSongArtistWidth = currentSongArtistWidth;                
+            }            
+        }
+
+        // Print the table headers with padding
+        String namePadding = getPadding(ARTIST_NAME, maxSongArtistWidth);
+        String titlePadding = getPadding(SONG_NAME, maxSongNameWidth);
+        print("   " + SONG_NAME + titlePadding + "| " + ARTIST_NAME + namePadding + "| " + PLAY_COUNT);
+
+        // Print each song with padding - so it appears like a table
+        for (SongInfo songInfo : songs) {
+
+            String songNamePadding = getPadding(songInfo.getSongName(), maxSongNameWidth);
+            String songArtistPadding = getPadding(songInfo.getArtistName(), maxSongArtistWidth);      
+            print(count + ". " + songInfo.getSongName() + songNamePadding + "| " + songInfo.getArtistName() + songArtistPadding + "| " + songInfo.getPlayCount());
             count++;
         }
+    }
+
+    
+    /**
+     * Returns a string of spaces used for padding.
+     * The padding will be different depending on the length of the input text.
+     * @param text      the input text
+     * @param maxLength the maximum length of the resulting string
+     * @return the padding string
+     */
+    private String getPadding(String text, int maxLength) {
+
+        int spaces = maxLength - text.length() + 1; 
+        String padding = String.format("%" + spaces + "s", "");
+        return padding;
     }
 
     /**
