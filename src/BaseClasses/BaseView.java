@@ -82,7 +82,6 @@ public abstract class BaseView {
             count++;
         }
     }
-
     
     /**
      * Returns a string of spaces used for padding.
