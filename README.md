@@ -1,18 +1,14 @@
-## Getting Started
+## Sound Sorcerer
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This is a basic JAVA console application which emulates some features of a music library management program.
+It was created for BNU programming concepts module assignment - COM4023.
 
-## Folder Structure
+## Application Features
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- Saving/Restoring `SongInfo` objects to disk, currently a folder in the project root.
+- Holding and managing a list of songs. 
+- Create a new song based on user input.
+- Create a new song based on randomly generated data.
+- Remove a song from the library. 
+- Sort the list alphabetically 
+- Sort the list to only show songs over a given play count
