@@ -21,14 +21,14 @@ public abstract class BaseView {
     /** Prints the title bar - used to keep the title above all other output.
      */
     protected void printTitleBar(){
-        print("#### SOUNDS SORCERER ####");
+        print("#### SOUND SORCERER ####");
         print(" ");
     }
     
     /** Prints all variables for a given song.
      */
     protected void printSong(SongInfo song){
-        print(song.getSongName() + " " + song.getArtistName() + " " + song.getPlayCount());
+        print(song.getSongName() + " - " + song.getArtistName() + " | " + song.getPlayCount());
     }
 
     /**
@@ -40,7 +40,7 @@ public abstract class BaseView {
 
         // Table headers
         final String SONG_NAME = "Song Name";
-        final String ARTIST_NAME = "Song Title";
+        final String ARTIST_NAME = "Artist Name";
         final String PLAY_COUNT = "Play Count";
 
         // Song Count
@@ -65,9 +65,9 @@ public abstract class BaseView {
         }
 
         // Print the table headers with padding
-        String namePadding = getPadding(ARTIST_NAME, maxSongArtistWidth);
-        String titlePadding = getPadding(SONG_NAME, maxSongNameWidth);
-        print("    " + SONG_NAME + titlePadding + "| " + ARTIST_NAME + namePadding + "| " + PLAY_COUNT);
+        String namePadding = getPadding(SONG_NAME, maxSongNameWidth);
+        String titlePadding = getPadding(ARTIST_NAME, maxSongArtistWidth);
+        print("    " + SONG_NAME + namePadding + "| " + ARTIST_NAME + titlePadding + "| " + PLAY_COUNT);
 
         // Print each song with padding - so it appears like a table
         for (SongInfo songInfo : songs) {

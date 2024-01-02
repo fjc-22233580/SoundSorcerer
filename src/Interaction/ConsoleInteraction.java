@@ -2,8 +2,8 @@ package Interaction;
 import java.util.UUID;
 
 import BaseClasses.BaseView;
-import Models.SongInfo;
 import HelperMethods.HelperMethods;
+import Models.SongInfo;
 
 /**
  * This class represents the console interaction for the SoundSorcerer application.
@@ -176,7 +176,7 @@ public class ConsoleInteraction extends BaseView {
      */
     private void addNewSong(){
         
-        final String Flag = "add:";
+        final String Flag = "'add:'";
 
         // Flag to indicate if the user has supplied invalid arguments.
         boolean invalidArgs = false;
