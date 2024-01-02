@@ -17,7 +17,7 @@ public class LibraryManager {
     private SongLibrary songLibrary;
 
     // Generates a random song name and artist name.
-    SongGenerator songGenerator;
+    private SongGenerator songGenerator;
 
     public LibraryManager() {
         super();
