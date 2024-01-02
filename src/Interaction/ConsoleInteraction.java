@@ -176,7 +176,7 @@ public class ConsoleInteraction extends BaseView {
      */
     private void addNewSong(){
         
-        final String Flag = "'add:'";
+        final String Flag = "add:";
 
         // Flag to indicate if the user has supplied invalid arguments.
         boolean invalidArgs = false;
@@ -186,7 +186,7 @@ public class ConsoleInteraction extends BaseView {
         printTitleBar();
 
         // Print instructions
-        print("Enter " + Flag + " followed by the song title, artist and play count seperated by commas");
+        print("Enter '" + Flag + "' followed by the song title, artist and play count seperated by commas");
         print("or press enter x to return to the main menu");
 
         // Get and validate user response
